@@ -105,6 +105,8 @@ newAdd(newAdd2(3, 4), 5)
  printCar3({make: "Toyota", model: "Corolla", year: 2020}) 
 
  // EXCESS PROPERTY ERROR: "Object literal may only specify known properties..."
+ // Error appears because nobody can safely access this object further in the code.
+ // Nothing can see this object other than printCar()
  printCar({make: "Toyota", model: "Corolla", year: 2020, color: "RED"})
 
  const myCar = {
@@ -114,4 +116,9 @@ newAdd(newAdd2(3, 4), 5)
   color: "RED"
 }
 
- printCar(myCar); // No errors because 
+// No errors because:
+// printCar() cannot access that extra color property
+// Because it has been stated upfront what this function expects
+// However, we can use myCar variable further in the code
+// And some part of code might use that color property and some code expects it
+printCar(myCar); 
